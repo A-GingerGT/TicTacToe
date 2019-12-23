@@ -10,7 +10,7 @@ def instructions():
     Method that will provide instructions to the person playing the game
     """
     print("Welcome to Austin's Tic-Tac-Toe!")
-    print("    You selected mode"  + sys.argv[1])
+    print("    You selected mode "  + sys.argv[1])
     print("Here is how to play this game:")
     print("Human players are always X, and you will always go first (so you should never lose)")
     print("The squares on the board are numbered as shown below")
@@ -130,15 +130,24 @@ def play_game(mode):
             print(game_board)
             print("You have won the game, congratulations!")
             game_over = 1
+            new_game = input("Do you want to play again? (0 for no, 1 for yes): ")
+            if int(new_game) == 1:
+                play_game(mode)
 
         if cpu_wins:                                    # Print that you lost and end the game
             print(game_board)
             print("You have lost the game, you suck!")
             game_over = 1
+            new_game = input("Do you want to play again? (0 for no, 1 for yes): ")
+            if int(new_game) == 1:
+                play_game(mode)
 
         if len(valid_moves) == 0:                       # See if the game is out of moves to be made (a draw)
             print("The game is a draw, better luck next time")
             game_over = 1
+            new_game = input("Do you want to play again? (0 for no, 1 for yes): ")
+            if int(new_game) == 1:
+                play_game(mode)
 
 if __name__ == "__main__":
     play_game(sys.argv[1])
